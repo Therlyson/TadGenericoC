@@ -55,6 +55,7 @@ Produto *removeProduto(gCofo *gc, char *nome) {
 }
 
 
+
 void *elementsCof(gCofo *c, int pos) {
     void *data;
     if (c == NULL) {
@@ -99,10 +100,13 @@ int drainOutCof(gCofo *c){
 
 
 int colDestroy(gCofo *gc){
-    if(gc!=NULL){
-        free(gc->item);  // Libera a memória dos elementos
-        free(gc);
-        return 1;
+    if(gc != NULL){
+        if(gc->numItens == 0){
+            free(gc->item);
+            free(gc);
+            gc->numItens = 0;       
+            return 1;
+        }
     }
     return 0;
 }

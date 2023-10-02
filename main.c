@@ -73,10 +73,12 @@ int main(){
 
         else if (opcao == 4) {
             Produto *elemento;
-            for (int i = 0; i < getQtdItens(gcofo); i++) { 
+            int numeros = getQtdItens(gcofo);
+            for (int i = 0; i < numeros; i++) { 
                 elemento = (Produto*)elementsCof(gcofo, i);
                 if (elemento == NULL) {
                     printf("ERRO AO MOSTRAR LISTA!");
+                    break;
                 } else {
                     printf("Nome: %s\nQuantidade: %d\nPreco: %.2f\n\n", elemento->nome, elemento->quantidade, elemento->preco);
                 }
